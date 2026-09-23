@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ju Hyun (Esther) Yeo | Generative AI Professional</title>
+<meta name="description" content="Linguistics-trained Generative AI specialist focused on LLM evaluation, prompt engineering, AI quality, adversarial testing, and human feedback.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23D9ACA5'/%3E%3Ctext x='32' y='45' font-size='34' font-family='Georgia' font-style='italic' font-weight='600' text-anchor='middle' fill='%23FFFDF8'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --paper:#FAF3EA;
+  --cream:#FFFDF8;
+  --ink:#4A3B34;
+  --ink-soft:#8C7A6E;
+  --rose:#D9ACA5;
+  --rose-deep:#C4938C;
+  --blush:#F1DAD6;
+  --sage:#D7E0C9;
+  --sage-deep:#A9BC97;
+  --lavender:#E1D9ED;
+  --lavender-deep:#C3B4D9;
+  --gold:#CBA66C;
+  --gold-wash:#F5EAD3;
+  --display:"Cormorant Garamond","Playfair Display",Georgia,serif;
+  --text:"Lora",Georgia,"Times New Roman",serif;
+  --wrap: min(1160px, 100% - 3rem);
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.5rem}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--text);font-size:1.05rem;line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px;border-radius:4px}
+.wrap{width:var(--wrap);margin-inline:auto}
+.section{padding:clamp(4rem,9vw,7rem) 0}
+
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+h2{font-weight:600;font-size:clamp(2.15rem,4.8vw,3.6rem);line-height:1.08}
+h3{font-weight:600;line-height:1.2}
+p{margin:0 0 1.15rem}
+em{font-style:italic}
+
+/* ---------- Shared bits ---------- */
+.chip{
+  display:inline-block;font-family:var(--text);font-weight:500;
+  font-size:.85rem;line-height:1;padding:.5rem .95rem;
+  border:1px solid rgba(74,59,52,.2);border-radius:999px;
+  background:var(--cream);color:var(--ink);letter-spacing:.01em;
+}
+.chip.mint{background:var(--sage);border-color:rgba(74,59,52,.14)}
+.chip.pink{background:var(--blush);border-color:rgba(74,59,52,.14)}
+.chip.lilac{background:var(--lavender);border-color:rgba(74,59,52,.14)}
+.chip.white{background:var(--cream)}
+
+.btn{
+  display:inline-block;font-family:var(--text);font-weight:600;font-size:1.02rem;
+  padding:.85rem 1.7rem;border:1px solid rgba(74,59,52,.22);border-radius:999px;
+  background:var(--blush);color:var(--ink);text-decoration:none;
+  box-shadow:0 14px 26px -18px rgba(74,59,52,.5), 0 0 26px -6px rgba(196,147,140,.55);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 32px -16px rgba(74,59,52,.5), 0 0 36px -4px rgba(196,147,140,.7)}
+.btn.white{background:var(--cream)}
+.btn-row{display:flex;flex-wrap:wrap;gap:1rem}
+
+/* ---------- Nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:20;
+  background:rgba(250,243,234,.92);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(74,59,52,.14);
+}
+.nav-inner{
+  width:var(--wrap);margin-inline:auto;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:.35rem 1.5rem;padding:.85rem 0;
+}
+.wordmark{
+  font-family:var(--display);font-style:italic;font-weight:600;font-size:1.35rem;
+  letter-spacing:0;text-decoration:none;color:var(--ink);
+}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.15rem .35rem}
+.nav ul a{
+  font-family:var(--text);font-weight:500;font-size:.96rem;
+  text-decoration:none;padding:.35rem .85rem;border-radius:999px;color:var(--ink);
+  transition:background .2s ease;
+}
+.nav ul a:hover{background:var(--blush)}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:#F1DFDA;color:var(--ink);
+  padding:clamp(3rem,7vw,6rem) 0 clamp(3.5rem,8vw,7rem);
+  border-bottom:1px solid rgba(74,59,52,.14);overflow:hidden;
+}
+.hero .wrap{display:grid;gap:3.5rem;grid-template-columns:minmax(0,1fr)}
+@media (min-width:1000px){
+  .hero .wrap{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);align-items:center;gap:4rem}
+}
+.hero .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.hero h1{
+  font-weight:600;font-size:clamp(2.7rem,6.2vw,5rem);
+  line-height:1.04;letter-spacing:-.02em;margin:1.5rem 0 1.6rem;
+}
+.hero h1 span{display:inline-block;animation:rise 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 70ms)}
+@keyframes rise{from{opacity:0;transform:translateY(.35em)}to{opacity:1;transform:none}}
+.hero .lead{font-size:1.14rem;max-width:34rem;margin-bottom:2rem;color:var(--ink-soft)}
+
+/* Pragmatics demo */
+.demo{
+  margin:0;background:var(--cream);color:var(--ink);
+  border:1px solid rgba(74,59,52,.16);border-radius:28px;
+  box-shadow:0 34px 60px -30px rgba(74,59,52,.35), 0 0 60px -18px rgba(195,180,217,.6);
+  padding:1.6rem;display:flex;flex-direction:column;gap:1rem;
+}
+@media (min-width:1000px){.demo{transform:rotate(1deg)}}
+.demo-title{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.3rem;letter-spacing:0;margin:0}
+.bubble{
+  font-family:var(--text);font-weight:500;font-size:1.12rem;line-height:1.45;
+  padding:.95rem 1.15rem;border-radius:20px;max-width:88%;margin:0;
+}
+.bubble.user{background:var(--lavender);border-bottom-right-radius:6px;align-self:flex-end}
+.bubble.model{background:var(--paper);border:1px solid rgba(74,59,52,.16);border-bottom-left-radius:6px;min-height:3.6rem}
+.bubble .err{text-decoration:underline wavy var(--rose-deep);text-decoration-thickness:2px;text-underline-offset:6px}
+.bubble mark{background:var(--sage);color:var(--ink);padding:.1rem .3rem;border-radius:4px}
+.toggle{display:flex;gap:.4rem;padding:.3rem;border:1px solid rgba(74,59,52,.2);border-radius:999px;align-self:stretch}
+.toggle button{
+  flex:1;font:inherit;font-family:var(--text);font-weight:600;font-size:.92rem;
+  padding:.6rem .5rem;border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;
+  transition:background .2s ease;
+}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
+.toggle button:not([aria-pressed="true"]):hover{background:var(--blush)}
+.verdict{font-size:.96rem;line-height:1.55;color:var(--ink-soft);margin:0;min-height:3rem}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;gap:2.5rem;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){
+  .about-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:4rem}
+  .about-grid h2{position:sticky;top:6.5rem;align-self:start}
+}
+.prose p{max-width:62ch;font-size:1.08rem}
+
+.skills{display:grid;gap:1.25rem;grid-template-columns:minmax(0,1fr);margin-top:clamp(3.5rem,7vw,5.5rem)}
+@media (min-width:860px){
+  .skills{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .skill:nth-child(1){grid-column:span 4}
+  .skill:nth-child(2){grid-column:span 2}
+  .skill:nth-child(n+3){grid-column:span 2}
+}
+.skill{
+  border:1px solid rgba(74,59,52,.14);border-radius:22px;padding:1.6rem;
+  display:flex;flex-direction:column;gap:1rem;
+  box-shadow:0 24px 44px -34px rgba(74,59,52,.3), 0 0 40px -20px rgba(196,147,140,.55);
+}
+.skill:nth-child(1){background:var(--lavender)}
+.skill:nth-child(2){background:var(--blush)}
+.skill:nth-child(3){background:var(--sage)}
+.skill:nth-child(4){background:var(--gold-wash)}
+.skill:nth-child(5){background:var(--cream)}
+.skill h3{font-size:1.4rem}
+.skill .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill .chip{background:var(--cream);font-size:.8rem;padding:.4rem .7rem}
+.skill:nth-child(5) .chip{background:var(--lavender)}
+.skill ul{list-style:none;margin:0;padding:0;font-size:.97rem;line-height:1.6}
+.skill li{position:relative;padding-left:1.1rem;margin-bottom:.6rem}
+.skill li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:var(--rose-deep);border-radius:50%}
+@media (min-width:860px){
+  .skill:nth-child(1) ul{columns:2;column-gap:2rem}
+  .skill:nth-child(1) li{break-inside:avoid}
+}
+
+/* ---------- Experience ---------- */
+.experience{background:var(--cream);border-block:1px solid rgba(203,166,108,.4)}
+.experience h2{max-width:16ch;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.job{
+  display:grid;gap:1.5rem;grid-template-columns:minmax(0,1fr);
+  border-top:1px solid rgba(74,59,52,.16);padding:2rem 0 1rem;margin-bottom:2.5rem;
+}
+@media (min-width:900px){
+  .job{grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:3rem}
+  .job-head{position:sticky;top:6.5rem;align-self:start}
+}
+.job-head .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.job-head h3{font-size:clamp(1.7rem,3vw,2.2rem);margin-bottom:.6rem;font-style:italic}
+.org{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.15rem;margin:0;color:var(--ink)}
+.org-meta{font-family:var(--text);font-weight:500;color:var(--ink-soft);font-size:.95rem;margin:.2rem 0 0}
+.job ul{list-style:none;margin:0;padding:0}
+.job li{position:relative;padding-left:1.5rem;margin-bottom:.9rem;max-width:64ch}
+.job li::before{content:"";position:absolute;left:0;top:.7em;width:.5rem;height:.5rem;border-radius:50%;background:var(--rose-deep)}
+
+/* ---------- Projects ---------- */
+.projects{background:var(--lavender)}
+.projects h2{max-width:15ch;margin-bottom:clamp(2.5rem,6vw,4rem)}
+.cards{display:grid;gap:1.5rem;grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{
+  border:1px solid rgba(74,59,52,.14);border-radius:24px;
+  padding:clamp(1.6rem,3vw,2.4rem);
+  display:flex;flex-direction:column;gap:1rem;color:var(--ink);min-height:20rem;
+  box-shadow:0 26px 48px -36px rgba(74,59,52,.32), 0 0 44px -18px rgba(203,166,108,.55);
+}
+.card h3{font-size:clamp(1.65rem,3vw,2.15rem)}
+.card p{font-size:1rem;margin:0;max-width:52ch;color:var(--ink-soft)}
+.card .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.75rem}
+.card .tags .chip{background:var(--cream);font-size:.8rem;padding:.42rem .75rem}
+.status{
+  align-self:flex-start;font-family:var(--text);font-weight:600;font-size:.98rem;
+  color:var(--rose-deep);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;
+}
+.card.c1{background:var(--blush)}
+.card.c2{background:var(--sage)}
+.card.c3{background:var(--gold-wash)}
+.card.c4{background:var(--cream)}
+.card.research{background:var(--cream);grid-column:1 / -1;min-height:0}
+@media (min-width:820px){
+  .card.research{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:3rem;align-items:start}
+  .card.research .research-side{display:flex;flex-direction:column;gap:1rem}
+}
+.research-side{display:flex;flex-direction:column;gap:1rem}
+.research .kicker{align-self:flex-start}
+
+/* ---------- Case study ---------- */
+.case h2{font-size:clamp(2.3rem,5.6vw,4.4rem);letter-spacing:-.02em;max-width:20ch;margin:1.25rem 0 1.75rem;font-style:italic}
+.case .lead{font-size:1.1rem;max-width:62ch;color:var(--ink-soft)}
+.steps{list-style:none;padding:0;margin:3rem 0 0;display:grid;gap:1rem;grid-template-columns:minmax(0,1fr)}
+.steps li{
+  background:var(--cream);border:1px solid rgba(74,59,52,.14);border-radius:18px;padding:1.2rem 1.3rem;
+  display:flex;align-items:center;gap:1rem;
+  box-shadow:0 20px 36px -30px rgba(74,59,52,.3), 0 0 30px -16px rgba(196,147,140,.5);
+}
+.steps .num{font-family:var(--display);font-style:italic;font-weight:600;font-size:2.3rem;line-height:1;color:var(--rose-deep)}
+.steps .name{font-family:var(--text);font-weight:600;font-size:1.1rem;line-height:1.2}
+@media (min-width:960px){
+  .steps{grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;padding-bottom:4rem}
+  .steps li{flex-direction:column;align-items:flex-start;gap:.9rem;margin-top:calc((var(--n) - 1) * 1.1rem);min-height:8.5rem}
+}
+
+/* ---------- Publications ---------- */
+.pubs{background:var(--gold-wash);border-block:1px solid rgba(203,166,108,.4)}
+.pubs h2{max-width:16ch;margin-bottom:clamp(2.5rem,6vw,4rem)}
+.pub{display:grid;gap:2.5rem;grid-template-columns:minmax(0,1fr);align-items:center}
+@media (min-width:820px){.pub{grid-template-columns:auto minmax(0,1fr);gap:4rem}}
+.cover{
+  width:min(240px,70%);aspect-ratio:3/4;background:linear-gradient(160deg,var(--rose) 0%,var(--lavender-deep) 100%);color:var(--cream);
+  border:1px solid rgba(74,59,52,.18);border-radius:8px 18px 18px 8px;box-shadow:0 28px 50px -26px rgba(74,59,52,.4), 0 0 46px -14px rgba(195,180,217,.6);
+  padding:1.4rem;display:flex;flex-direction:column;justify-content:space-between;
+  transform:rotate(-2.5deg);margin-inline:.5rem;
+}
+.cover strong{font-family:var(--display);font-style:italic;font-weight:700;font-size:2rem;line-height:1;letter-spacing:-.01em}
+.cover span{font-family:var(--text);font-weight:500;font-size:.85rem;line-height:1.3;color:rgba(255,253,248,.92)}
+.pub .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.1rem}
+.pub h3{font-size:clamp(1.7rem,3.2vw,2.4rem);margin-bottom:1.1rem;max-width:22ch}
+.pub .cite{max-width:62ch;font-size:1rem;line-height:1.65;color:var(--ink-soft)}
+.pub .chip.plain{background:var(--cream);font-size:.8rem;padding:.42rem .75rem}
+
+/* ---------- Capabilities ---------- */
+.caps h2{max-width:14ch;margin-bottom:clamp(2.5rem,6vw,4rem)}
+.cloud{display:flex;flex-wrap:wrap;gap:.8rem 1rem;list-style:none;margin:0;padding:0}
+.cloud li{
+  font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(1rem,1.9vw,1.35rem);line-height:1;
+  padding:.8rem 1.3rem;border:1px solid rgba(74,59,52,.18);border-radius:999px;background:var(--blush);color:var(--ink);
+}
+.cloud li:nth-child(5n+2){background:var(--sage)}
+.cloud li:nth-child(5n+3){background:var(--lavender)}
+.cloud li:nth-child(5n+4){background:var(--gold-wash)}
+.cloud li:nth-child(5n){background:var(--cream)}
+@media (min-width:700px){
+  .cloud li:nth-child(odd){transform:rotate(-.8deg)}
+  .cloud li:nth-child(even){transform:rotate(.8deg)}
+}
+
+/* ---------- Contact ---------- */
+.contact{background:linear-gradient(135deg,#CE9992 0%,#C6A0B7 100%);color:#FFF8F2;border-top:1px solid rgba(255,255,255,.25)}
+.contact h2{font-size:clamp(2.7rem,8vw,6rem);line-height:1;letter-spacing:-.02em;margin-bottom:1.75rem;color:#FFF8F2;font-style:italic}
+.contact p{font-size:1.14rem;max-width:40rem;margin-bottom:2.2rem;color:rgba(255,248,242,.94)}
+footer{background:var(--paper);color:var(--ink-soft);padding:1.6rem 0;font-family:var(--text);font-size:.92rem;border-top:1px solid rgba(203,166,108,.4)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
+footer p{margin:0}
+
+/* ---------- Dot-grid texture ---------- */
+body{
+  background-color:var(--paper);
+  background-image:radial-gradient(circle at 1px 1px, rgba(74,59,52,.08) 1.4px, transparent 0);
+  background-size:24px 24px;
+}
+.experience,.pubs{background-image:radial-gradient(circle at 1px 1px, rgba(74,59,52,.05) 1.4px, transparent 0);background-size:24px 24px}
+
+/* ---------- Glow orbs ---------- */
+.hero,.projects,.pubs,.contact{position:relative;overflow:hidden}
+.hero .wrap,.projects .wrap,.pubs .wrap,.contact .wrap{position:relative;z-index:1}
+.hero::before,.hero::after,
+.projects::before,.projects::after,
+.pubs::before,.pubs::after,
+.contact::before,.contact::after{
+  content:"";position:absolute;border-radius:50%;filter:blur(70px);
+  pointer-events:none;z-index:0;
+}
+.hero::before{width:320px;height:320px;background:var(--rose);top:-120px;right:-60px;opacity:.6}
+.hero::after{width:260px;height:260px;background:var(--lavender-deep);bottom:-110px;left:-70px;opacity:.45}
+.projects::before{width:300px;height:300px;background:var(--gold);top:-110px;left:6%;opacity:.45}
+.projects::after{width:260px;height:260px;background:var(--rose);bottom:-120px;right:4%;opacity:.4}
+.pubs::before{width:280px;height:280px;background:var(--sage-deep);top:-100px;right:8%;opacity:.4}
+.pubs::after{width:220px;height:220px;background:var(--lavender-deep);bottom:-100px;left:6%;opacity:.35}
+.contact::before{width:320px;height:320px;background:rgba(255,255,255,.55);top:-110px;left:-60px;opacity:.7}
+.contact::after{width:260px;height:260px;background:var(--lavender-deep);bottom:-100px;right:-50px;opacity:.5}
+
+/* ---------- Glowy headline text (solid ink + soft colored halo, always readable) ---------- */
+.hero h1,
+.about-grid h2,
+.experience h2,
+.projects h2,
+.case h2,
+.pubs h2,
+.caps h2{
+  color:var(--ink);
+  text-shadow:0 0 22px rgba(196,147,140,.5), 0 0 44px rgba(203,166,108,.38), 0 0 64px rgba(195,180,217,.32);
+}
+.contact h2{
+  color:#FFF9F5;
+  text-shadow:0 0 24px rgba(255,255,255,.6), 0 0 48px rgba(245,234,211,.5), 0 0 72px rgba(255,231,224,.4);
+}
+.wordmark{color:var(--rose-deep)}
+.demo-title{color:var(--rose-deep)}
+
+/* ---------- Sparkles ---------- */
+.sparkle{
+  display:inline-block;font-size:1.4rem;width:1em;height:1em;vertical-align:-.15em;
+  color:var(--gold);animation:twinkle 2.6s ease-in-out infinite;
+}
+.sparkle.s2{color:var(--rose-deep);animation-delay:.6s}
+.sparkle.s3{color:var(--gold-wash);font-size:2rem;margin-right:.15em;animation-delay:1.2s}
+@keyframes twinkle{
+  0%,100%{opacity:.5;transform:scale(.85) rotate(0deg)}
+  50%{opacity:1;transform:scale(1.1) rotate(8deg)}
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero h1 span{animation:none}
+  .btn,.toggle button,.nav ul a{transition:none}
+  .sparkle{animation:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top">Ju Hyun (Esther) Yeo</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="chips">
+          <svg class="sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 5 2 6 12 12-10 6-11 7-12 12-1-5-2-6-12-12C10 6 11 5 12 0z"/></svg>
+          <span class="chip">Generative AI</span>
+          <span class="chip mint">Linguistics</span>
+          <span class="chip pink">AI Quality</span>
+          <svg class="sparkle s2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 5 2 6 12 12-10 6-11 7-12 12-1-5-2-6-12-12C10 6 11 5 12 0z"/></svg>
+        </div>
+        <h1 aria-label="I evaluate how AI understands language.">
+          <span style="--i:0" aria-hidden="true">I</span>
+          <span style="--i:1" aria-hidden="true">evaluate</span>
+          <span style="--i:2" aria-hidden="true">how</span>
+          <span style="--i:3" aria-hidden="true">AI</span>
+          <span style="--i:4" aria-hidden="true">understands</span>
+          <span style="--i:5" aria-hidden="true">language.</span>
+        </h1>
+        <p class="lead">Linguistics-trained Generative AI specialist focused on LLM evaluation, prompt engineering, AI quality, adversarial testing, human feedback, and the analysis of model behavior.</p>
+        <div class="btn-row">
+          <a class="btn" href="#projects">Explore my work</a>
+          <a class="btn white" href="#experience">View experience</a>
+        </div>
+      </div>
+
+      <figure class="demo" aria-labelledby="demo-title">
+        <figcaption id="demo-title" class="demo-title">Same sentence, two readings</figcaption>
+        <p class="bubble user">Can you open the window?</p>
+        <div class="toggle" role="group" aria-label="Choose a reading">
+          <button type="button" data-mode="literal" aria-pressed="true">Literal reading</button>
+          <button type="button" data-mode="intended" aria-pressed="false">Intended meaning</button>
+        </div>
+        <p class="bubble model" id="demo-reply" aria-live="polite"><span class="err">Yes, I can.</span></p>
+        <p class="verdict" id="demo-verdict">Answers the question that was asked, but misses the request behind it.</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="about-grid">
+        <h2>Language is part of the AI problem.</h2>
+        <div class="prose">
+          <p>My expertise lies in fine-tuning LLM prompts and responses, applying linguistic frameworks to LLM data governance, and evaluating model outputs against structured data-pipeline rubrics to ensure response quality. I leverage edge cases and recurring patterns in model responses to investigate the underlying behaviors and parameters influencing response generation, contributing a linguistic perspective to the quality assurance and evaluation of transformer-based model pipelines.</p>
+          <p>I conduct quality control through structured evaluation metrics and linguistic analysis, tracing observable model failures back to their underlying error taxonomies. I communicate these findings to cross-functional teams to support data curation, guideline refinement, and alignment around ground-truth standards.</p>
+          <p>My goal is to make agentic AI systems more accurate, contextually appropriate, reliable, and useful across diverse linguistic and user contexts.</p>
+        </div>
+      </div>
+
+      <div class="skills">
+        <article class="skill">
+          <h3>Annotation &amp; Evaluation</h3>
+          <div class="chips"><span class="chip">Speech</span><span class="chip">Text</span><span class="chip">Image</span><span class="chip">Video</span></div>
+          <ul>
+            <li>Pattern recognition to infer characteristics of recurring edge cases from context</li>
+            <li>Hypothesis testing to determine whether an inference generalizes across a dataset</li>
+            <li>Cognitive flexibility to adapt evaluation criteria, metrics, and priorities</li>
+          </ul>
+        </article>
+
+        <article class="skill">
+          <h3>NLP / ML Data Pipelines</h3>
+          <div class="chips"><span class="chip">Linguistic data</span><span class="chip">Python prototyping</span><span class="chip">Data analysis</span></div>
+          <ul>
+            <li>Applying NLP and ML concepts to language data</li>
+            <li>Building simple Python prototypes</li>
+            <li>Querying and analyzing structured datasets</li>
+            <li>Translating linguistic observations into measurable data-quality criteria</li>
+          </ul>
+        </article>
+
+        <article class="skill">
+          <h3>Prompt &amp; Conversation Design</h3>
+          <div class="chips"><span class="chip">Instruction hierarchy</span><span class="chip">Context</span><span class="chip">Tone</span><span class="chip">Response behavior</span></div>
+          <ul>
+            <li>Structuring prompt constraints systematically for effective responses</li>
+            <li>Establishing natural congruity between tone and communicative intent</li>
+            <li>Iteratively refining prompts according to conversational context and model behavior</li>
+          </ul>
+        </article>
+
+        <article class="skill">
+          <h3>LLM Quality &amp; Error Analysis</h3>
+          <div class="chips"><span class="chip">Error taxonomies</span><span class="chip">Edge cases</span><span class="chip">Root-cause analysis</span><span class="chip">QA</span></div>
+          <ul>
+            <li>Identifying recurring failure patterns in model outputs</li>
+            <li>Distinguishing isolated errors from systematic behaviors</li>
+            <li>Developing linguistic hypotheses around model failures</li>
+            <li>Communicating findings to support evaluation, curation, and guideline refinement</li>
+          </ul>
+        </article>
+
+        <article class="skill">
+          <h3>Corpus Linguistics: Identifying Linguistic Patterns</h3>
+          <div class="chips"><span class="chip">Pragmatics</span><span class="chip">Semantics</span><span class="chip">Phonetics</span><span class="chip">Syntax</span><span class="chip">Sociolinguistics</span></div>
+          <ul>
+            <li>Examining patterns across language data to identify contextual, semantic, syntactic, phonetic, and sociolinguistic variation</li>
+            <li>Applying linguistic analysis to ambiguity, meaning, discourse, and language behavior</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience" class="section experience">
+    <div class="wrap">
+      <h2>Building experience across AI, language, and technology.</h2>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="chips"><span class="chip">AI / Generative AI</span></div>
+          <h3>AI Content Specialist</h3>
+          <p class="org">Centific LLC</p>
+          <p class="org-meta">December 2024 – Present</p>
+        </div>
+        <ul>
+          <li>Developed, evaluated, and refined enterprise LLM prompts and responses to support AI training, benchmarking, and quality improvement.</li>
+          <li>Evaluated AI outputs for accuracy, consistency, reliability, instruction adherence, hallucination, bias, and pragmatic appropriateness.</li>
+          <li>Conducted human judgments and preference-based evaluations for reinforcement-learning-oriented datasets.</li>
+          <li>Analyzed recurring model and annotation errors, edge cases, discrepancies, and rework patterns to identify opportunities for guideline refinement.</li>
+          <li>Applied linguistic and contextual reasoning to assess whether generated responses appropriately reflected user intent, conversational context, and language conventions.</li>
+          <li>Supported AI quality reporting and large-scale data analysis, including Power BI-based examination of evaluation and metadata patterns.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="chips"><span class="chip mint">Generative AI</span></div>
+          <h3>Artificial General Intelligence (AGI) Trainer</h3>
+          <p class="org">Outlier.ai</p>
+          <p class="org-meta">Freelance &middot; June 2024 – May 2026</p>
+        </div>
+        <ul>
+          <li>Identified outdated information and maintained AI-agent knowledge bases by rigorously reviewing content for accuracy, credibility, helpfulness, and safety.</li>
+          <li>Contributed to reinforcement learning through human feedback (RLHF) and fine-tuning datasets used to train AI systems.</li>
+          <li>Annotated personalized data to help AI models generate feedback more closely aligned with human values and characteristics.</li>
+          <li>Composed responses and ratings across subject areas including beauty, health and nutrition, philosophy, and psychology, evaluating English grammaticality, pragmatics, contextual relevance, accuracy, and thoroughness.</li>
+          <li>Collaborated with data scientists, researchers, and software engineers to refine and iteratively improve AI models.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="chips"><span class="chip pink">AI / Red Teaming</span></div>
+          <h3>Data Labeling Analyst</h3>
+          <p class="org">Meta</p>
+          <p class="org-meta">Contract &middot; August 2023 – December 2024</p>
+        </div>
+        <ul>
+          <li>Authored editorial style guidelines outlining effective prompt examples for testing and jailbreaking Meta AI.</li>
+          <li>Applied semantic, discourse, pragmatic, and syntactic frameworks when developing high-level prompts and labeling datasets.</li>
+          <li>Used nuanced pragmatic cues and discourse structures to probe implicit meanings and identify potential model weaknesses for red-teaming purposes.</li>
+          <li>Annotated approximately 80–100 responses per day using high-precision data metrics to evaluate model reactions, behavioral consistency, and memory-related behavior.</li>
+          <li>Linguistically analyzed multimodal LLM behavior by strategically manipulating context, input data, core instructions, and output indicators.</li>
+          <li>Applied zero-shot, one-shot, few-shot, chain-of-thought, model-guided, and iterative prompting approaches to examine model functionality and safety.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="chips"><span class="chip lilac">Multimodal AI</span></div>
+          <h3>Content Analyst</h3>
+          <p class="org">Google</p>
+          <p class="org-meta">Contract &middot; September 2022 – August 2023</p>
+        </div>
+        <ul>
+          <li>Categorized linguistic nuances and implications across more than 500 contemporary North American enterprise advertisements per day according to defined evaluation criteria.</li>
+          <li>Evaluated the logical flow, relevance, and overall quality of multimodal advertising content.</li>
+          <li>Delivered consistent ratings and evaluations across video, image, and text-based materials.</li>
+          <li>Collaborated with team members to establish accuracy and consistency across keywords, interface layouts, and visual representation styles.</li>
+          <li>Reviewed and annotated 100–200 Korean multimodal Google advertisements to evaluate consumer compatibility, accuracy, safety, and relevance.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="chips"><span class="chip white">Professional Experience</span></div>
+          <h3>Legal Secretary</h3>
+          <p class="org">Kring &amp; Chung, LLP</p>
+          <p class="org-meta">Full-time &middot; Irvine, CA &middot; July 2021 – February 2022</p>
+        </div>
+        <ul>
+          <li>Assisted the managing partner and four attorneys with composing and proofreading business agreements, including real estate, distribution, employment, and business alliance contracts.</li>
+          <li>Compiled pleadings, exhibits, fee agreements, cease-and-desist letters, and other legal documents across litigation and transactional matters.</li>
+          <li>Conducted daily legal research involving litigation, real estate, and transactional matters.</li>
+          <li>Screened and assisted clients from national and international regions, including Korean-speaking clients, while precisely analyzing and translating documents and resolving logistical issues.</li>
+          <li>Summarized reports and organized complex events into comprehensive timelines.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="chips"><span class="chip">Technology Research</span><span class="chip">Blockchain Research</span></div>
+          <h3>Blockchain Research Intern</h3>
+          <p class="org">Bitsalt LLC</p>
+          <p class="org-meta">December 2019 – April 2020</p>
+        </div>
+        <ul>
+          <li>Identified high-interest keywords and emerging trends in cryptocurrency markets, including STO/ICO activity and SEC regulatory developments.</li>
+          <li>Researched factors contributing to emerging cryptocurrency trends and evaluated relevant market information.</li>
+          <li>Contributed to administrative and legal processes involved in launching mainnet networks for more than five startups.</li>
+          <li>Developed knowledge of blockchain ecosystems, including token design, digital marketing, utility and security tokenization, and crowdfunding.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" class="section projects">
+    <div class="wrap">
+      <h2>Research-driven projects in language and AI.</h2>
+
+      <div class="cards">
+        <article class="card c1">
+          <h3>LLM Evaluation Lab</h3>
+          <p>A structured evaluation framework examining how reliably LLMs interpret ambiguous, indirect, contextual, and conflicting instructions.</p>
+          <div class="tags"><span class="chip">LLM Evaluation</span><span class="chip">Pragmatics</span><span class="chip">Python</span><span class="chip">Error Analysis</span></div>
+          <a class="status" href="#case-study">View methodology</a>
+        </article>
+
+        <article class="card c2">
+          <h3>Linguistic Red-Team Benchmark</h3>
+          <p>An adversarial evaluation framework designed to expose LLM weaknesses involving ambiguity, indirect language, implicature, cultural context, and conflicting instructions.</p>
+          <div class="tags"><span class="chip">Red Teaming</span><span class="chip">Adversarial Testing</span><span class="chip">Pragmatics</span></div>
+          <a class="status" href="#contact">In development</a>
+        </article>
+
+        <article class="card c3">
+          <h3>RLHF Preference Analysis</h3>
+          <p>A pairwise human-preference evaluation study examining how competing LLM responses differ in helpfulness, accuracy, instruction adherence, and contextual appropriateness.</p>
+          <div class="tags"><span class="chip">RLHF</span><span class="chip">Preference Ranking</span><span class="chip">Human Feedback</span></div>
+          <a class="status" href="#contact">In development</a>
+        </article>
+
+        <article class="card c4">
+          <h3>GenAI Quality Dashboard</h3>
+          <p>A data-analysis dashboard examining model quality, error distributions, failure types, prompt categories, and comparative performance.</p>
+          <div class="tags"><span class="chip">Power BI</span><span class="chip">Data Analysis</span><span class="chip">AI Quality</span></div>
+          <a class="status" href="#contact">In development</a>
+        </article>
+
+        <article class="card research">
+          <div class="research-side">
+            <span class="chip mint kicker">Linguistics research</span>
+            <h3>Nafaanra Speech &amp; Phonetic Analysis</h3>
+          </div>
+          <div class="research-side">
+            <p>Linguistic fieldwork research involving the transcription, segmentation, annotation, and phonetic analysis of more than 1,000 Nafaanra lexical items using Praat.</p>
+            <div class="tags"><span class="chip lilac">UC Berkeley</span><span class="chip lilac">Phonetics</span><span class="chip lilac">Praat</span><span class="chip lilac">Linguistic Annotation</span></div>
+            <a class="status" href="#contact">Research experience</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED RESEARCH ================= -->
+  <section id="case-study" class="section case">
+    <div class="wrap">
+      <span class="chip pink">Featured research</span>
+      <h2>Can LLMs understand what people actually mean?</h2>
+      <p class="lead">This evaluation study investigates whether language models appropriately interpret indirect requests, ambiguous statements, missing context, and conflicting instructions. Rather than measuring quality solely through factual correctness, the framework incorporates pragmatic appropriateness, instruction following, contextual interpretation, and error analysis.</p>
+
+      <ol class="steps">
+        <li style="--n:1"><span class="num">1</span><span class="name">Prompt Design</span></li>
+        <li style="--n:2"><span class="num">2</span><span class="name">Evaluation Rubric</span></li>
+        <li style="--n:3"><span class="num">3</span><span class="name">Human Evaluation</span></li>
+        <li style="--n:4"><span class="num">4</span><span class="name">Error Analysis</span></li>
+        <li style="--n:5"><span class="num">5</span><span class="name">Re-evaluation</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section id="publications" class="section pubs">
+    <div class="wrap">
+      <h2>Published work in Generative AI security.</h2>
+
+      <div class="pub">
+        <div class="cover" aria-hidden="true">
+          <strong>Generative AI Security</strong>
+          <span>Future of Business and Finance</span>
+        </div>
+        <div>
+          <div class="chips"><span class="chip pink">Book Chapter</span><span class="chip white">Springer</span></div>
+          <h3>Utilizing Prompt Engineering to Operationalize Cybersecurity</h3>
+          <p class="cite">Huang, K., Huang, G., Duan, Y., Hyun, J. (2024). <em>Utilizing Prompt Engineering to Operationalize Cybersecurity.</em> In Huang, K., Wang, Y., Goertzel, B., Li, Y., Wright, S., &amp; Ponnapalli, J. (eds.), <em>Generative AI Security.</em> Future of Business and Finance. Springer, Cham.</p>
+          <div class="chips"><span class="chip plain">2024</span><span class="chip plain">Generative AI</span><span class="chip plain">Prompt Engineering</span><span class="chip plain">Cybersecurity</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CAPABILITIES ================= -->
+  <section id="capabilities" class="section caps">
+    <div class="wrap">
+      <h2>The areas I bring together.</h2>
+      <ul class="cloud">
+        <li>LLM Evaluation</li>
+        <li>Prompt Engineering</li>
+        <li>AI Red Teaming</li>
+        <li>RLHF &amp; Human Feedback</li>
+        <li>Error Analysis</li>
+        <li>Linguistic Analysis</li>
+        <li>Pragmatics</li>
+        <li>Semantics</li>
+        <li>NLP</li>
+        <li>Multimodal AI</li>
+        <li>Python</li>
+        <li>Power BI</li>
+        <li>Data Quality</li>
+        <li>Annotation Design</li>
+        <li>Human Evaluation</li>
+        <li>Adversarial Testing</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <h2><svg class="sparkle s3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1 5 2 6 12 12-10 6-11 7-12 12-1-5-2-6-12-12C10 6 11 5 12 0z"/></svg> Let's build better AI.</h2>
+      <p>I am interested in Generative AI evaluation, AI quality, prompt engineering, linguistic analysis, red teaming, human-feedback systems, and language-centered AI research.</p>
+      <div class="btn-row">
+        <a class="btn" href="mailto:juhyunyeo75@gmail.com">Email me</a>
+        <a class="btn white" href="https://www.linkedin.com/in/estherjhyeo097/">LinkedIn</a>
+        <a class="btn white" href="https://medium.com/@juhyunyeo75">Medium</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Ju Hyun (Esther) Yeo</p>
+    <p>Generative AI &amp; Applied Linguistics</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var modes = {
+      literal: {
+        reply: '<span class="err">Yes, I can.</span>',
+        verdict: 'Answers the question that was asked, but misses the request behind it.'
+      },
+      intended: {
+        reply: '<mark>Sure, opening it now.</mark>',
+        verdict: 'Reads the request behind the question, which is what pragmatic appropriateness means.'
+      }
+    };
+    var buttons = document.querySelectorAll('.toggle button');
+    var reply = document.getElementById('demo-reply');
+    var verdict = document.getElementById('demo-verdict');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var m = modes[btn.dataset.mode];
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        reply.innerHTML = m.reply;
+        verdict.textContent = m.verdict;
+      });
+    });
+  })();
+</script>
+</body>
+</html>
